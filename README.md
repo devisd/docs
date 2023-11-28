@@ -8,8 +8,8 @@ This repository provides information on how to use and integrate the `EmailRequi
 
 ## Navigate the Documentation
 
-- [**README in English**](./readme_en.md): If you prefer English, follow this link to explore the documentation.
-- [**README in Russian**](./readme_ru.md): Or if Russian is more comfortable for you, hop over here.
+- [**README in English**](./README_EN.md): If you prefer English, follow this link to explore the documentation.
+- [**README in Russian**](./README_RU.md): Or if Russian is more comfortable for you, hop over here.
 
 ## How to Use the Component?
 
@@ -29,8 +29,8 @@ In the "About the Component" section, you'll find details on how to use `EmailRe
 
 ## Навигация по документации
 
-- [**README на английском**](./readme_en.md): Если вы предпочитаете английский язык, перейдите по этой ссылке для ознакомления с документацией.
-- [**README на русском**](./readme_ru.md): А если вам ближе русский, то перейдите сюда.
+- [**README на английском**](./README_EN.md): Если вы предпочитаете английский язык, перейдите по этой ссылке для ознакомления с документацией.
+- [**README на русском**](./README_RU.md): А если вам ближе русский, то перейдите сюда.
 
 ## Как использовать компонент?
 
