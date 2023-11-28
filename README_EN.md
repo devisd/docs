@@ -1,15 +1,15 @@
-# NotificationForm Component Documentation
+# EmailRequirementsPopup Component Documentation
 
 ## Introduction
 
-The `NotificationForm` component is a versatile component designed for displaying notifications and interacting with the user based on their session data. This documentation provides an overview of how to import and use the `NotificationForm` component within your application.
+The `EmailRequirementsPopup` component is designed to handle email-related notifications and interactions with users. This documentation provides an overview of how to import and use the `EmailRequirementsPopup` component within your Next.js application.
 
 ### Importing the Component
 
-To use the `NotificationForm` component, import it into your file as follows:
+To use the `EmailRequirementsPopup` component, import it into your file as follows:
 
 ```javascript
-import NotificationForm from 'widgets/NotificationForm/NotificationForm'
+import EmailRequirementsPopup from 'widgets/NotificationForm/NotificationForm'
 ```
 
 ## Prerequisites
@@ -20,21 +20,23 @@ Before triggering the component, user session data is required. You can obtain t
 const session = await getSession()
 ```
 
-From the session data, extract the user's email using `session.user.email`. If the email is `null`, trigger the modal popup, prompting the user to provide their email. The user must then confirm their email by following a link sent via email.
+From the session data, extract the user's email using `session.user.email`. If the email is `null`, the modal popup (popup) is triggered, prompting the user to provide their email. The user must then confirm their email by following a link sent via email.
+
+### Example Usage
+
+To use the `EmailRequirementsPopup` component, place it directly in your pages or components where needed. The component is entirely independent, as all necessary data is requested from the server within the component itself.
 
 Example usage:
 
-```javascript
-{
-  session?.user.email === null && <NotificationForm session={session} />
-}
+```jsx
+<EmailRequirementsPopup />
 ```
 
 ## Component Structure
 
-The `NotificationForm` component incorporates several sub-components and logical checks to handle different scenarios. Below is an overview of the key components and their functions:
+The `EmailRequirementsPopup` component incorporates several sub-components and logical checks to handle different scenarios. Below is an overview of the key components and their functions:
 
-- `session` (user session data passed as a prop)
+- `session` (automatically provided by the 'next-auth/react' library)
 - `profile` (user profile data, automatically retrieved from the server)
 - `<Attention />` (notification component for informing about the absence of an email in the session and user profile)
 - `<InputEmail />` (component with an email input field for the user to provide their email)
@@ -47,11 +49,15 @@ The `NotificationForm` component incorporates several sub-components and logical
 
 The project utilizes internationalization, with the variable `t` representing translation functions. The text content in components is localized using this variable.
 
-## Example Usage
+## Component Details
 
-Below is an example code snippet illustrating the conditional rendering of different parts of the `NotificationForm` component:
+### EmailRequirementsPopup Component (`<EmailRequirementsPopup />`)
 
-```javascript
+The `EmailRequirementsPopup` component is designed for flexibility and independence. It handles scenarios such as the absence of an email in the session and user profile or unconfirmed email. The component triggers modal popups and includes sub-components for various actions.
+
+Example Code:
+
+```jsx
 <>
   {(session?.user.email === null && profile?.email === null) || profile?.email?.confirmed === false ? (
     <Modal active={active} setActive={handleSetActive} isAlert className={styles.notificationForm}>
@@ -63,17 +69,9 @@ Below is an example code snippet illustrating the conditional rendering of diffe
 </>
 ```
 
-## Component Details
-
 ### Attention Component (`<Attention />`)
 
-The `Attention` component is responsible for notifying the user about the absence of an email in the session and user profile. It contains the following elements:
-
-- **Title and Subtitle:** Displays a title and subtitle to convey the attention-grabbing message.
-
-- **Text Content:** Provides additional information to guide the user on what action to take.
-
-- **Link and Button:** Includes a link for navigation and a button for user interaction.
+The `Attention` component displays a notification about the absence of an email in the session and user profile. It includes buttons for navigation and user interaction.
 
 Example Code:
 
@@ -95,15 +93,7 @@ Example Code:
 
 ### InputEmail Component (`<InputEmail />`)
 
-The `InputEmail` component provides an input field for the user to enter their email. It handles the form submission and updates the user's email on the server. Key elements include:
-
-- **Form Structure:** Includes a form with an email input field and a checkbox for user acceptance.
-
-- **Input Field:** Allows users to enter their email.
-
-- **Checkbox:** Requires users to accept certain conditions.
-
-- **Buttons:** Provides buttons for navigation and form submission.
+The `InputEmail` component provides an input field for the user to enter their email. It handles the form submission and updates the user's email on the server.
 
 Example Code:
 
@@ -138,11 +128,7 @@ Example Code:
 
 ### Confirm Component (`<Confirm />`)
 
-The `Confirm` component prompts the user to verify their email. It includes elements such as:
-
-- **Title and Text:** Displays a title and text to inform the user about the email confirmation process.
-
-- **Button:** Triggers the verification process.
+The `Confirm` component prompts the user to verify their email. It includes a button to trigger the verification process.
 
 Example Code:
 
@@ -163,13 +149,7 @@ Example Code:
 
 ### ErrorPopup Component (`<ErrorPopup />`)
 
-The `ErrorPopup` component handles errors related to email confirmation. It includes elements like:
-
-- **Title and Text:** Communicates the error and provides information on what the user can do.
-
-- **Link:** Offers a link for additional actions.
-
-- **Button with Timeout:** Triggers a retry of the confirmation process, with a timeout for loading indication.
+The `ErrorPopup` component handles errors related to email confirmation. It includes elements like a title, text, link, and a button with a timeout for retrying the confirmation process.
 
 Example Code:
 
@@ -192,8 +172,4 @@ Example Code:
 </>
 ```
 
-These detailed descriptions should provide a clearer understanding of each component's role and the elements they contain within the `NotificationForm` component.
-
-## Conclusion
-
-The `NotificationForm` component is designed to be flexible and independent, allowing it to be used throughout the application seamlessly. By following the guidelines in this documentation, you can integrate this component into your project to handle email-related notifications and interactions with users.
+In summary, the `EmailRequirementsPopup` component is highly versatile and can be used throughout the application independently. It handles various email-related scenarios and provides a seamless user experience.
