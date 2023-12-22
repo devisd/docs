@@ -223,7 +223,7 @@ export default function Countries5YearsWidget({ name, widget, choices }: IDynami
             {selectedFields.map((field, index) => (
               <div key={index} className={styles.year}>
                 <Select
-                  className={styles.select}
+                  className={!field.year ? styles.err : styles.select}
                   classNamePrefix="react-select"
                   options={generateYearOptions()}
                   variant="white"
@@ -243,7 +243,7 @@ export default function Countries5YearsWidget({ name, widget, choices }: IDynami
                   options={getAvailableCountries(index)}
                   isMulti
                   placeholder={t?.placeholder}
-                  className={styles.select}
+                  className={!field.countries.length ? styles.err : styles.select}
                   styles={{
                     control: (styles) => ({
                       ...styles,
@@ -276,7 +276,8 @@ export default function Countries5YearsWidget({ name, widget, choices }: IDynami
                   onChange={(selectedOptions) => {
                     handleCountriesChange(index, selectedOptions)
                     const outputString = generateOutputString()
-                    onChange(outputString)
+
+                    !outputString.length ? onChange(' - ') : onChange(outputString)
                   }}
                 />
                 {selectedFields.length > 1 && (
