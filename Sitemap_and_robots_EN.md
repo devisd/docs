@@ -30,7 +30,7 @@ The script handles these sections, formats their URLs, and creates a sitemap wit
 - Certain sections like legislations and sponsor-related URLs are currently commented out and not included in the sitemap.
 
 
-# Robots.txt Configuration for <your_site>
+# Robots.txt Configuration
 
 This `robots.txt` configuration is designed for the <your_site> website, specifying directives for web crawlers and search engine robots.
 
